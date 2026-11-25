@@ -1,0 +1,68 @@
+<Window x:Class="ProjectionManager.ImportProgressDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="添加素材" Width="560" Height="236" MinWidth="520"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize" ShowInTaskbar="False"
+        Background="{DynamicResource WindowBrush}"
+        Foreground="{DynamicResource TextPrimaryBrush}"
+        FontFamily="Microsoft JhengHei UI">
+    <Window.Resources>
+        <Style x:Key="DialogButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Background" Value="{DynamicResource ButtonBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="18,0" />
+            <Setter Property="Height" Value="34" />
+            <Setter Property="MinWidth" Value="96" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="24,22,24,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Ellipse Width="10" Height="10" Fill="{DynamicResource AmberBrush}" VerticalAlignment="Center" Margin="0,0,10,0" />
+            <TextBlock Text="添加素材中，請等待進度完成！"
+                       Foreground="{DynamicResource TextPrimaryBrush}"
+                       FontSize="18" FontWeight="SemiBold" />
+        </StackPanel>
+
+        <TextBlock Grid.Row="1" x:Name="DetailText" Text="正在準備…"
+                   Foreground="{DynamicResource TextDimBrush}" FontSize="13"
+                   TextWrapping="Wrap" Margin="20,10,0,0" />
+
+        <StackPanel Grid.Row="2" VerticalAlignment="Center" Margin="0,16,0,0">
+            <ProgressBar x:Name="Progress" Height="18" Minimum="0" Maximum="100" Value="0"
+                         Background="{DynamicResource InputBrush}"
+                         Foreground="{DynamicResource TealBrush}"
+                         BorderBrush="{DynamicResource LineBrush}" BorderThickness="1" />
+            <Grid Margin="0,8,0,0">
+                <TextBlock x:Name="PercentText" Text="0%" HorizontalAlignment="Left"
+                           Foreground="{DynamicResource TextFaintBrush}" FontSize="12" />
+                <TextBlock x:Name="CountText" Text="" HorizontalAlignment="Right"
+                           Foreground="{DynamicResource TextFaintBrush}" FontSize="12" />
+            </Grid>
+        </StackPanel>
+
+        <Grid Grid.Row="3" Margin="0,16,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="可隨時取消；已完成的素材會保留。"
+                       Foreground="{DynamicResource TextFaintBrush}" FontSize="12"
+                       VerticalAlignment="Center" TextWrapping="Wrap" Margin="0,0,12,0" />
+            <Button Grid.Column="1" x:Name="CancelButton" Content="取消添加" Click="Cancel_Click"
+                    Style="{StaticResource DialogButton}" />
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,25 @@
+# Visual Studio / build output
+.vs/
+bin/
+obj/
+obj_corrupt_*/
+*.user
+*.suo
+*.pdb
+*.log
+
+# Distribution / installer payloads
+dist/
+installer/prereq/
+installer/Output/
+*.zip
+*.7z
+*.exe
+*.msi
+
+# Test screenshots and local runtime data
+tests/artifacts/
+_empty_feed/
+_tools/
+*.bak
+*.tmp

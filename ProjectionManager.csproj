@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AssemblyName>ProjectionManager</AssemblyName>
+    <RootNamespace>ProjectionManager</RootNamespace>
+    <!-- dist 是交付打包目錄，內含遞迴複製的舊版資料；不得進入編譯與預設項目掃描。 -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);dist\**;obj_corrupt_*\**;tests\artifacts\**</DefaultItemExcludes>
+    <AssemblyTitle>Glory 榮耀</AssemblyTitle>
+    <Product>Glory 榮耀</Product>
+    <Description>Glory 榮耀 · 投影控制台</Description>
+    <Version>2.3.0</Version>
+    <AssemblyVersion>2.3.0.0</AssemblyVersion>
+    <FileVersion>2.3.0.0</FileVersion>
+    <ApplicationIcon>Assets\glory.ico</ApplicationIcon>
+    <Platforms>AnyCPU</Platforms>
+    <RollForward>Major</RollForward>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- UseWindowsForms 會自動注入 System.Windows.Forms / System.Drawing 全域 using，
+         與 WPF 的 Brush、Button、Image、KeyEventArgs 等型別衝突；只保留明確引入。 -->
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\glory_logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4314.35" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\bible_cuvt.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
